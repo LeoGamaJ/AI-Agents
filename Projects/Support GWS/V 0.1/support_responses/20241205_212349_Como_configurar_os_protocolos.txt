@@ -1,0 +1,51 @@
+=== Resposta do Suporte Google Workspace ===
+
+Data/Hora: 2024-12-05T21:23:49.256686
+Solicitação: Como configurar os protocolos DNS para entrega de e-mails do Gmail no Google Workspace
+
+=== Resposta ===
+Para configurar os protocolos DNS para entrega de e-mail do Gmail no Google Workspace, siga estas etapas:
+
+1. **Acesse as configurações de DNS do seu domínio**: Você precisa ter acesso administrativo às configurações de DNS do seu domínio. Isso geralmente é feito através do site do seu registrador de domínio. Se você não tem certeza, entre em contato com o seu registrador de domínio ou departamento de TI.
+
+2. **Navegue até as configurações de DNS**: Procure uma seção chamada "Configurações de DNS", "Gerenciamento de DNS", "Gerenciamento de servidor de nomes" ou algo similar. O nome exato pode variar entre os registradores.
+
+3. **Adicione um novo registro MX**: Os registros MX direcionam o tráfego de e-mail para o seu domínio. Você precisará adicionar novos registros MX para os servidores de e-mail do Google. Clique em "Adicionar novo registro" ou uma opção similar.
+
+4. **Insira os valores do registro MX**: O Google Workspace requer 5 registros MX. Insira estes exatamente como mostrado abaixo, um de cada vez:
+
+    - Prioridade: 1, Valor: ASPMX.L.GOOGLE.COM
+    - Prioridade: 5, Valor: ALT1.ASPMX.L.GOOGLE.COM
+    - Prioridade: 5, Valor: ALT2.ASPMX.L.GOOGLE.COM
+    - Prioridade: 10, Valor: ALT3.ASPMX.L.GOOGLE.COM
+    - Prioridade: 10, Valor: ALT4.ASPMX.L.GOOGLE.COM
+
+5. **Salve suas alterações**: Depois de inserir todos os 5 registros MX, salve suas alterações. Isso geralmente é feito clicando em um botão "Salvar" ou "Aplicar".
+
+6. **Verifique suas alterações**: Volte para o console de administração do Google Workspace e navegue até Apps > Google Workspace > Gmail > Configurar registros MX. Clique em "Verificar registros MX". Pode levar até 72 horas para as alterações se propagarem pela internet, então não se preocupe se a verificação falhar inicialmente.
+
+Lembre-se, alterar as configurações de DNS pode potencialmente interromper outros serviços que estão sendo executados no seu domínio. Sempre verifique duas vezes suas alterações e consulte um profissional de TI se você não tiver certeza. Se você estiver usando um registrador de domínio que não está listado nas instruções de registro MX do Google, você pode precisar entrar em contato com o seu registrador para obter instruções específicas.
+
+Para garantir a entrega segura e confiável de e-mails com o Gmail no Google Workspace, siga estas melhores práticas:
+
+1. **Verifique seu domínio**: Este é o primeiro passo para configurar o Gmail para o seu Google Workspace. Você precisa provar ao Google que você é o proprietário do domínio que está usando. O Google fornece um código de verificação que você precisa adicionar aos registros de DNS do seu domínio.
+
+2. **Configure os registros SPF**: O Sender Policy Framework (SPF) é uma medida de segurança para evitar que outros enviem e-mails em nome do seu domínio. Para configurar um registro SPF, você precisa adicionar um registro TXT nas configurações de DNS do seu domínio com o valor 'v=spf1 include:_spf.google.com ~all'.
+
+3. **Configure os registros DKIM**: O DomainKeys Identified Mail (DKIM) é outra medida de segurança que adiciona uma assinatura digital aos seus e-mails. Esta assinatura é verificada pelo servidor de e-mail do destinatário para garantir que o e-mail não foi modificado durante o trânsito. Para configurar o DKIM, você precisa gerar uma chave DKIM no console de administração do Google Workspace e adicioná-la como um registro TXT nas configurações de DNS do seu domínio.
+
+4. **Configure os registros DMARC**: O Domain-based Message Authentication, Reporting, and Conformance (DMARC) é uma política que informa aos servidores receptores o que fazer se um e-mail falhar nas verificações SPF ou DKIM. Para configurar o DMARC, você precisa adicionar um registro TXT nas configurações de DNS do seu domínio com uma política para lidar com verificações falhas.
+
+5. **Atualize os registros MX**: Os registros de troca de correio (MX) direcionam seu e-mail para os servidores que hospedam seu serviço de e-mail. Para o Gmail, você precisa adicionar cinco registros MX nas configurações de DNS do seu domínio. Os valores para esses registros podem ser encontrados no console de administração do Google Workspace.
+
+6. **Previna possíveis interrupções**: Antes de fazer alterações nas configurações de DNS, anote as configurações atuais para evitar interrupções em outros serviços que estão sendo executados no seu domínio. As alterações nas configurações de DNS podem levar até 48 horas para se propagar, então planeje de acordo.
+
+Para considerações empresariais, o Google Workspace oferece recursos avançados como o Google Vault para eDiscovery e arquivamento, e o Work Insights para monitoramento e análise do uso do sistema.
+
+Em termos de segurança, além de verificar o domínio e configurar os registros SPF, DKIM e DMARC, é recomendado habilitar a Verificação em 2 Etapas para todos os usuários para adicionar uma camada extra de segurança. Além disso, considere usar o centro de segurança no Google Workspace, que fornece uma visão unificada de importantes análises de segurança e recomendações de melhores práticas do Google.
+
+Além disso, o Google Workspace oferece o Alert Center, que fornece notificações sobre atividades relacionadas à segurança no seu domínio, e a ferramenta de investigação, que permite identificar, triar e tomar medidas sobre questões de segurança e privacidade no seu domínio.
+
+Por último, é importante revisar e atualizar regularmente as configurações de segurança da sua organização para garantir que elas estão de acordo com as melhores práticas atuais e as necessidades específicas da sua organização.
+
+Lembre-se, o processo para alterar as configurações de DNS pode variar dependendo do seu registrador de domínio. Se você não tem certeza, consulte a documentação de ajuda do seu registrador ou entre em contato com a equipe de suporte deles. Sempre verifique duas vezes suas alterações para evitar erros de digitação ou erros. Configurações de DNS incorretas podem levar a spoofing de e-mail ou e-mails não sendo entregues.
