@@ -2,6 +2,8 @@
 
 An AI-powered assistant specialized in Google Workspace support, using the CrewAI library to provide accurate and contextualized responses in Brazilian Portuguese.
 
+![Screem_app](./assets/screem_agt_gws.png)
+
 ## 🛠️ Built With Amazing Technologies
 
 <div align="center">
